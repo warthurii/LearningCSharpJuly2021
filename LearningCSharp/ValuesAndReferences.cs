@@ -115,8 +115,45 @@ namespace LearningCSharp
             x = y;
             y = temp;
         }
-        // overload
 
+        [Fact]
+        public void ChangingAString()
+        {
+            var myName = "jeff";
+
+            var upperName = myName.ToUpper();
+
+            Assert.Equal("JEFF", upperName);
+        }
+
+        [Fact]
+        public void StringsAreImmutable()
+        {
+            // immutable means you can't change (mutate) it.
+            // this is bad don't do this.
+            string numbers = "";
+            for (int t = 0; t < 1000; t++)
+            {
+                numbers += t;
+            }
+
+           // Assert.Equal("TACOS", numbers);
+        }
+
+        [Fact]
+        public void StringbuilderForMutableStrings()
+        {
+            var numbers = new StringBuilder();
+
+            // basic guidance - use a StringBuilder if you are modifying a string more than 3 times
+            // or any modifications on a large string (like, bigger than 10k or so)
+            for (int t = 0; t < 1000; t++)
+            {
+                numbers.Append(t);
+            }
+
+         //   Assert.Equal("TACOS", numbers.ToString());
+        }
     }
 
     public class Dog
