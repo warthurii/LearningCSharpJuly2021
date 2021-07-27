@@ -79,7 +79,7 @@ namespace LearningCSharp
 
     public class Dog
     {
-        public string Name;
+        public string Name; // this is a public field. bad idea. more later.
     }
 
 }
