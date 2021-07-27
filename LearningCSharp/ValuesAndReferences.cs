@@ -73,8 +73,50 @@ namespace LearningCSharp
 
             g.WashTheDog(d);
 
-            Assert.Equal("Java", d.Name);
+            Assert.NotEqual("Java", d.Name);
         }
+
+        [Fact]
+        public void WashingTheInteger()
+        {
+            var x = 32;
+
+            var g = new DogGroomer();
+
+            g.WashTheNumber(ref x);
+
+            Assert.Equal(64, x);
+        }
+        [Fact]
+        public void SwappingSomeNumbers()
+        {
+            var x = 10;
+            var y = 20;
+
+            // Step 2: Magic!
+            Swap<int>(ref x, ref y);
+            Assert.Equal(20, x);
+            Assert.Equal(10, y);
+
+
+            var x2 = "Joe";
+            var y2 = "Sue";
+
+            // ??
+            Swap<string>(ref x2, ref y2);
+
+            Assert.Equal("Sue", x2);
+            Assert.Equal("Joe", y2);
+        }
+
+        public void Swap<T>(ref T x, ref T y)
+        {
+            var temp = x;
+            x = y;
+            y = temp;
+        }
+        // overload
+
     }
 
     public class Dog
